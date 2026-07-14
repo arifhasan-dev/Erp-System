@@ -1,0 +1,1 @@
+import"../admin.bundle-CBXoUBAg.js";import"../main-B7Jkv9i9.js";document.addEventListener(`DOMContentLoaded`,function(){var e=document.getElementById(`listViewCalendar`);new FullCalendar.Calendar(e,{timeZone:`UTC`,initialView:`listWeek`,events:[{title:`Meeting`,start:new Date},{title:`Update Weekly`,start:new Date}]}).render()});

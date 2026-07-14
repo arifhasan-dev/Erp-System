@@ -1,0 +1,1 @@
+import{t as e}from"./swiper-bundle-DukfsYTx.js";new e(`#simplepaginationSwiper`,{loop:!0,speed:900,pagination:{el:`.swiper-pagination`,clickable:!0},autoplay:{delay:3e3,disableOnInteraction:!1}});

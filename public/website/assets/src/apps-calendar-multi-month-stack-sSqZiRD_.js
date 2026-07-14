@@ -1,0 +1,1 @@
+import"../admin.bundle-CBXoUBAg.js";import"../main-B7Jkv9i9.js";document.addEventListener(`DOMContentLoaded`,function(){var e=document.getElementById(`multiMonthStackCalendar`);new FullCalendar.Calendar(e,{timeZone:`UTC`,initialView:`multiMonthYear`,multiMonthMaxColumns:1,editable:!0}).render()});
