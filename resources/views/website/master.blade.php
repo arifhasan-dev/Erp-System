@@ -1408,8 +1408,8 @@
                                 </a>
                                 <div class="collapse" id="collapseSuppliers">
                                     <ul class="nav-menu-sub">
-                                        <li><a href="apps-suppliers-list.html" class="nav-link"><span data-translate="pe-supplier-list">Supplier List</span></a></li>
-                                        <li><a href="apps-suppliers-add.html" class="nav-link"><span data-translate="pe-add-supplier">Add Supplier</span></a></li>
+                                        <li><a href="{{route('suppliers.index')}}" class="nav-link"><span data-translate="pe-supplier-list">Supplier List</span></a></li>
+                                        <li><a href="{{route('suppliers.create')}}" class="nav-link"><span data-translate="pe-add-supplier">Add Supplier</span></a></li>
                                         <li><a href="apps-suppliers-payments.html" class="nav-link"><span data-translate="pe-payments">Payments</span></a></li>
                                         <li><a href="apps-suppliers-balance-reports.html" class="nav-link"><span data-translate="pe-balance-report">Balance Report</span></a></li>
                                     </ul>

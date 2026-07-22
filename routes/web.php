@@ -10,6 +10,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\SupplierController;
 
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified','user.status'])->group(function () {
@@ -37,5 +38,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::resource('/users',UserController::class);
     Route::resource('/brands',BrandController::class);
     Route::resource('/units',UnitController::class);
+    Route::resource('/suppliers',SupplierController::class);
 
 });

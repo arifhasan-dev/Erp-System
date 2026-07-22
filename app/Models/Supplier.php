@@ -34,7 +34,7 @@ class Supplier extends Model
          'updated_by',
 
      ];
-     public function BankAccounts()
+     public function bankAccounts()
      {
          return $this->hasMany(SupplierBankAccount::class);
      }
