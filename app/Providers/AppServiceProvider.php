@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
+use App\Repositories\Interfaces\SupplierRepositoryInterface;
+use App\Repositories\SupplierRepository;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
-use phpDocumentor\Reflection\Types\String_;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(
+            SupplierRepositoryInterface::class,
+            SupplierRepository::class
+        );
     }
 
     /**

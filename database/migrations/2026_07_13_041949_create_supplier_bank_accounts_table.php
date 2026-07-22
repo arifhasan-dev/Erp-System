@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('bank_city')->nullable();
             $table->string('bank_country')->nullable();
             $table->boolean('is_primary')->default(true);
+            $table->softDeletes();
             $table->boolean('default_payment')->default(true);
             $table->timestamps();
         });
