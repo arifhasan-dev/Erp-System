@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Repositories\Interfaces\ProductImageRepositoryInterface;
+use App\Repositories\Interfaces\ProductRepositoryInterface;
 use App\Repositories\Interfaces\SupplierRepositoryInterface;
+use App\Repositories\ProductImageRepository;
+use App\Repositories\ProductRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\SupplierRepository;
 use App\Repositories\SupplierBankAccountRepository;
@@ -23,6 +27,14 @@ class RepositoryServiceProvider extends ServiceProvider
             SupplierBankAccountRepositoryInterface::class,
             SupplierBankAccountRepository::class
 
+        );
+        $this->app->bind(
+            ProductRepositoryInterface::class,
+            ProductRepository::class
+        );
+        $this->app->bind(
+            ProductImageRepositoryInterface::class,
+            ProductImageRepository::class
         );
     }
 
