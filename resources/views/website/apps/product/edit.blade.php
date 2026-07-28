@@ -12,8 +12,9 @@
                         <li class="breadcrumb-item active">Add Products</li>
                     </ul>
                 </div>
-                <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('products.update',$product->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul class="mb-0">
@@ -24,7 +25,7 @@
                         </div>
                     @endif
                     <div class="row">
-                    <div class="col-xl-7 col-xxl-8">
+                        <div class="col-xl-7 col-xxl-8">
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="card-title mb-0">Product Information</h5>
@@ -33,18 +34,18 @@
                                     <div class="row g-4">
                                         <div class="col-12">
                                             <label for="productName" class="form-label fw-medium">Product Name</label>
-                                            <input type="text" id="productName" name="name" class="form-control" placeholder="Enter product name" required>
+                                            <input type="text" id="productName" value="{{$product->name}}" name="name" class="form-control" placeholder="Enter product name" required>
                                         </div>
                                         <div class="col-12">
                                             <label for="productDescription" class="form-label fw-medium">Description</label>
-                                            <textarea id="productDescription" class="form-control" name="description" rows="4" placeholder="Enter product description" required></textarea>
+                                            <textarea id="productDescription" class="form-control" name="description" rows="4" placeholder="Enter product description" required>{{$product->description}}</textarea>
                                         </div>
                                         <div class="col-md-6 col-xxl-4">
                                             <label for="categorySelect" class="form-label fw-medium">Category</label>
                                             <select name="category_id" id="" class="form-select" required>
                                                 <option value="">--Select Category --</option>
                                                 @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                                    <option value="{{$category->id}}"@selected(old('category_id',$product->category_id) == $category->id)>{{$category->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -55,7 +56,7 @@
                                                 <option value="">Select Brand</option>
 
                                                 @foreach($brands as $brand)
-                                                    <option value="{{ $brand->id }}">
+                                                    <option value="{{ $brand->id }}" @selected(old('brand_id',$product->brand_id) == $brand->id)>
                                                         {{ $brand->name }}
                                                     </option>
                                                 @endforeach
@@ -68,7 +69,7 @@
                                                 <option value="">Select Unit</option>
 
                                                 @foreach($units as $unit)
-                                                    <option value="{{ $unit->id }}">
+                                                    <option value="{{ $unit->id }}" @selected(old('unit_id',$product->unit_id) == $unit->id)>
                                                         {{ $unit->name }}
                                                     </option>
                                                 @endforeach
@@ -83,8 +84,7 @@
                                                 <option value="">-- Select Supplier --</option>
 
                                                 @foreach($suppliers as $supplier)
-                                                    <option value="{{ $supplier->id }}"
-                                                        {{ old('supplier_id') == $supplier->id ? 'selected' : '' }}>
+                                                    <option value="{{ $supplier->id }}"@selected(old('supplier_id',$product->supplier_id) == $supplier->id)>
                                                         {{ $supplier->name }}
                                                     </option>
                                                 @endforeach
@@ -100,7 +100,7 @@
                                                 id="code"
                                                 name="code"
                                                 class="form-control"
-                                                value="{{ old('code') }}"
+                                                value="{{$product->code}}"
                                                 placeholder="e.g. PRD-000001">
                                         </div>
                                         <div class="col-md-6 col-xxl-4">
@@ -113,7 +113,7 @@
                                                 id="sku"
                                                 name="sku"
                                                 class="form-control"
-                                                value="{{ old('sku') }}" placeholder="e.g. SKU-000001">
+                                                value="{{$product->sku}}"  placeholder="e.g. SKU-000001">
                                         </div>
                                         <div class="col-md-6 col-xxl-4">
                                             <label for="barcode" class="form-label fw-medium">
@@ -125,7 +125,7 @@
                                                 id="barcode"
                                                 name="barcode"
                                                 class="form-control"
-                                                value="{{ old('barcode') }}"
+                                                value="{{$product->barcode}}"
                                                 placeholder="e.g. 8901234567890">
                                         </div>
                                     </div>
@@ -143,7 +143,7 @@
                                             </label>
                                             <input type="number"
                                                    class="form-control" id="purchase_price" name="purchase_price" step="0.01"
-                                                   min="0" placeholder="Enter purchase price" required>
+                                                   min="0" value="{{$product->purchase_price}}" placeholder="Enter purchase price" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="selling_price" class="form-label">
@@ -153,6 +153,7 @@
                                                    class="form-control"
                                                    id="selling_price"
                                                    name="selling_price"
+                                                   value="{{$product->selling_price}}"
                                                    step="0.01"
                                                    min="0"
                                                    placeholder="Enter selling price"
@@ -166,6 +167,7 @@
                                                    class="form-control"
                                                    id="opening_stock"
                                                    name="opening_stock"
+                                                   value="{{$product->opening_stock}}"
                                                    min="0"
                                                    placeholder="Enter opening stock"
                                                    required>
@@ -178,6 +180,7 @@
                                                    class="form-control"
                                                    id="minimum_stock"
                                                    name="minimum_stock"
+                                                   value="{{$product->minimum_stock}}"
                                                    min="0"
                                                    placeholder="Enter minimum stock"
                                                    required>
@@ -200,11 +203,11 @@
                                                     id="status"
                                                     name="status"
                                                     required>
-                                                <option value="1">
+                                                <option value="1" {{$product->status == 1 ? 'selected' : ''}}>
                                                     Active
                                                 </option>
 
-                                                <option value="0">
+                                                <option value="0" {{$product->status == 0 ? 'selected' : ''}}>
                                                     Inactive
                                                 </option>
                                             </select>
@@ -216,27 +219,46 @@
                                     </div>
                                 </div>
                             </div>
-                    </div>
-                    <div class="col-xl-5 col-xxl-4">
-                        <div class="card position-sticky top-20">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Product Images & Media</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="row g-4">
-                                    <div class="col-md-12 mb-3">
-                                        <label for="images" class="form-label">
-                                            Product Images
-                                        </label>
+                        </div>
+                        <div class="col-xl-5 col-xxl-4">
+                            <div class="card position-sticky top-20">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Product Images & Media</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-4">
+                                        <div class="col-md-12 mb-3">
+                                            <label class="form-label fw-medium">Current Images</label>
 
-                                        <input type="file"
-                                               class="form-control" id="images"
-                                               name="images[]" multiple accept="image/*">
+                                            <div class="d-flex flex-wrap gap-3">
+                                                @forelse($product->images as $image)
+                                                    <div class="text-center">
+                                                        <img src="{{ asset('storage/' . $image->image) }}"
+                                                             alt="Product Image"
+                                                             class="img-thumbnail"
+                                                             width="120"
+                                                             height="120">
+                                                        <div class="form-check mt-2">
+                                                            <input type="checkbox" class="form-check-input" name="delete_images[]" value="{{$image->id}}" id="image{{$image->id}}">
+                                                            <label for="image{{$image->id}}" class="form-check-label">Remove</label>
+                                                        </div>
+                                                    </div>
+                                                @empty
+                                                    <p class="text-muted">No images found.</p>
+                                                @endforelse
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="images" class="form-label fw-medium">
+                                                Upload New Images
+                                            </label>
+                                            <input type="file" class="form-control" id="images" name="images[]" multiple accept="image/*">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </form>
 @endsection
+

@@ -1324,10 +1324,10 @@
                                 <div class="collapse" id="collapseProductse">
                                     <ul class="nav-menu-sub">
                                         @can('all-product.view')
-                                        <li><a href="{{route('website.apps.products.all-product')}}" class="nav-link"><span data-translate="pe-all-products">All Products</span></a></li>
+                                        <li><a href="{{route('products.index')}}" class="nav-link"><span data-translate="pe-all-products">All Products</span></a></li>
                                         @endcan
                                         @can('add-product.view')
-                                        <li><a href="{{route('website.apps.products.add-product')}}" class="nav-link"><span data-translate="pe-add-product">Add Product</span></a></li>
+                                        <li><a href="{{route('products.create')}}" class="nav-link"><span data-translate="pe-add-product">Add Product</span></a></li>
                                         @endcan
                                         <li><a href="apps-products-variant.html" class="nav-link"><span data-translate="pe-variants">Variants</span></a></li>
                                         @can('category.view')
