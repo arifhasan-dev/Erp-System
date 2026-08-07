@@ -38,7 +38,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <a class="btn btn-primary d-flex align-items-center gap-1" href="{{route('website.category.products.add-product')}}"><i data-lucide="plus" class="size-4"></i> Add Product</a>
+                                <a class="btn btn-primary d-flex align-items-center gap-1" href="{{route('products.create')}}"><i data-lucide="plus" class="size-4"></i> Add Product</a>
                             </div>
                         </div>
                     </div>
@@ -94,29 +94,81 @@
                             <table class="table table-borderless mb-0 text-nowrap align-middle">
                                 <thead>
                                 <tr class="bg-light border-bottom">
-                                    <th scope="col">
-                                        <div class="form-check check-primary">
-                                            <input class="form-check-input" title="checkbox" type="checkbox" id="checkboxDataAll">
-                                            <label class="form-check-label d-none" for="checkboxDataAll">
-                                                All Checkbox
-                                            </label>
-                                        </div>
-                                    </th>
                                     <th scope="col" class="text-muted fw-medium" data-sort="id">Product ID</th>
                                     <th scope="col" class="text-muted fw-medium" data-sort="name">Product</th>
+                                    <th scope="col" class="text-muted fw-medium" data-sort="image">Image</th>
                                     <th scope="col" class="text-muted fw-medium" data-sort="category">Category</th>
                                     <th scope="col" class="text-muted fw-medium" data-sort="price">Price</th>
                                     <th scope="col" class="text-muted fw-medium" data-sort="quantity">QTY</th>
-                                    <th scope="col" class="text-muted fw-medium" data-sort="inStock">Stock</th>
-                                    <th scope="col" class="text-muted fw-medium" data-sort="discount">Discount</th>
-                                    <th scope="col" class="text-muted fw-medium" data-sort="revenue">Revenue</th>
                                     <th scope="col" class="text-muted fw-medium" data-sort="brand">Brand</th>
-                                    <th scope="col" class="text-muted fw-medium" data-sort="cost">Cost</th>
                                     <th scope="col" class="text-muted fw-medium" data-sort="status">status</th>
                                     <th scope="col" class="text-muted fw-medium">Action</th>
                                 </tr>
                                 </thead>
-                                <tbody id="productsTableBody"></tbody>
+                                @foreach($products as $product)
+                                <tbody>
+                                    <tr>
+                                        <td>{{$product->id}}</td>
+                                        <td>{{$product->name}}</td>
+                                        <td>
+                                            @if($product->images->isNotEmpty())
+                                                <img src="{{ asset('storage/' . $product->images->first()->image) }}"
+                                                     alt="{{ $product->name }}"
+                                                     width="60"
+                                                     height="60"
+                                                     class="img-thumbnail">
+                                            @else
+                                                <span class="text-muted">No Image</span>
+                                            @endif
+                                        </td>
+                                        <td>{{$product->category->name}}</td>
+                                        <td>{{$product->selling_price}}</td>
+                                        <td>{{$product->opening_stock}}</td>
+                                        <td>{{$product->brand->name}}</td>
+                                        <td>
+                                            @if($product->status)
+                                                <span class="badge bg-success">Active</span>
+                                            @else
+                                                <span class="badge bg-danger">Inactive</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <div class="d-flex gap-1">
+
+                                                <!-- View -->
+                                                <a href="{{ route('products.show', $product->id) }}"
+                                                   class="btn btn-sm btn-info"
+                                                   title="View">
+                                                    <i class="bi bi-eye"></i>
+                                                </a>
+
+                                                <!-- Edit -->
+                                                <a href="{{ route('products.edit', $product->id) }}"
+                                                   class="btn btn-sm btn-warning"
+                                                   title="Edit">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+
+                                                <!-- Delete -->
+                                                <form action="{{ route('products.destroy', $product->id) }}"
+                                                      method="POST"
+                                                      onsubmit="return confirm('Are you sure you want to delete this product?')"
+                                                      class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button type="submit"
+                                                            class="btn btn-sm btn-danger"
+                                                            title="Delete">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </form>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                @endforeach
                             </table>
                         </div>
                         <div class="row align-items-center g-3 mt-3">

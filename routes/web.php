@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\AccountController;
@@ -11,12 +10,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseController;
 
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified','user.status'])->group(function () {
     Route::get('/',[HomeController::class,'index'])->middleware('permission:dashboard.view')->name('website.home.index');
-    Route::get('/all-product',[ProductController::class,'index'])->middleware('permission:product.view')->name('website.apps.products.all-product');
-    Route::get('/add-product',[ProductController::class,'AddProduct'])->middleware('permission:product.create')->name('website.apps.products.add-product');
 
     Route::resource('categories',CategoryController::class);
     Route::get('/test-mail', function () {
@@ -39,5 +38,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::resource('/brands',BrandController::class);
     Route::resource('/units',UnitController::class);
     Route::resource('/suppliers',SupplierController::class);
+    Route::resource('/products',ProductController::class);
+    Route::resource('/purchases',PurchaseController::class);
 
 });

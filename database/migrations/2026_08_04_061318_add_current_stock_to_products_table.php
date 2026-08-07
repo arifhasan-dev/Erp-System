@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('supplier_bank_accounts', function (Blueprint $table) {
-            $table->softDeletes();
+        Schema::table('products', function (Blueprint $table) {
+            $table->decimal('current_stock', 10, 2)
+                ->default(0)
+                ->after('opening_stock');
         });
     }
 
@@ -21,8 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('supplier_bank_accounts', function (Blueprint $table) {
-            $table->softDeletes();
+        Schema::table('products', function (Blueprint $table) {
+            //
         });
     }
 };

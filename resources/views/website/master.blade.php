@@ -1323,25 +1323,17 @@
                                 </a>
                                 <div class="collapse" id="collapseProductse">
                                     <ul class="nav-menu-sub">
-                                        @can('all-product.view')
-                                        <li><a href="{{route('website.apps.products.all-product')}}" class="nav-link"><span data-translate="pe-all-products">All Products</span></a></li>
-                                        @endcan
-                                        @can('add-product.view')
-                                        <li><a href="{{route('website.apps.products.add-product')}}" class="nav-link"><span data-translate="pe-add-product">Add Product</span></a></li>
-                                        @endcan
+                                        <li><a href="{{route('products.index')}}" class="nav-link"><span data-translate="pe-all-products">All Products</span></a></li>
+                                        <li><a href="{{route('products.create')}}" class="nav-link"><span data-translate="pe-add-product">Add Product</span></a></li>
+
                                         <li><a href="apps-products-variant.html" class="nav-link"><span data-translate="pe-variants">Variants</span></a></li>
-                                        @can('category.view')
+
                                         <li><a href="{{route('categories.index')}}" class="nav-link"><span data-translate="pe-categories">Categories</span></a></li>
-                                        @endcan
-                                        @can('subcategories.view')
                                         <li><a href="apps-products-sub-categories.html" class="nav-link"><span data-translate="pe-subcategories">Subcategories</span></a></li>
-                                        @endcan
-                                        @can('brand.view')
+
                                         <li><a href="{{route('brands.index')}}" class="nav-link"><span data-translate="pe-brands">Brands</span></a></li>
-                                        @endcan
-                                        @can('units.view')
+
                                         <li><a href="{{route('units.index')}}" class="nav-link"><span data-translate="pe-units">Units</span></a></li>
-                                        @endcan
                                         <li><a href="apps-products-reviews.html" class="nav-link"><span data-translate="pe-reviews">Reviews</span></a></li>
                                         <li><a href="apps-products-barcode.html" class="nav-link"><span data-translate="pe-print-barcode">Print Barcode</span></a></li>
                                         <li><a href="apps-products-bulk-import.html" class="nav-link"><span data-translate="pe-bulk-import">Bulk Import</span></a></li>
@@ -1423,8 +1415,8 @@
                                 </a>
                                 <div class="collapse" id="collapsePurchases">
                                     <ul class="nav-menu-sub">
-                                        <li><a href="apps-purchase.html" class="nav-link"><span data-translate="pe-purchase">Purchase</span></a></li>
-                                        <li><a href="apps-purchase-add.html" class="nav-link"><span data-translate="pe-add-purchase">Add Purchase</span></a></li>
+                                        <li><a href="{{route('purchases.index')}}" class="nav-link"><span data-translate="pe-purchase">Purchase</span></a></li>
+                                        <li><a href="{{route('purchases.create')}}" class="nav-link"><span data-translate="pe-add-purchase">Add Purchase</span></a></li>
                                         <li><a href="apps-purchase-returns.html" class="nav-link"><span data-translate="pe-returns">Returns</span></a></li>
                                         <li><a href="apps-purchase-payments.html" class="nav-link"><span data-translate="pe-payments">Payments</span></a></li>
                                     </ul>
