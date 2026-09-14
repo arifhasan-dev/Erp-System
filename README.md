@@ -1,59 +1,232 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ERP System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is an ERP system that I am building with Laravel as a practical project.
 
-## About Laravel
+I started this project to get better at building real-world Laravel applications instead of working only on small CRUD projects. While building it, I am focusing on database relationships, business logic, stock management, transactions, authentication, authorization, and keeping the code organized.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The project is still under development, so new modules and improvements will be added over time.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## What I Have Built So Far
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Authentication & Authorization
 
-## Learning Laravel
+* User authentication
+* Email verification
+* Role and permission based access
+* User status management
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Product Management
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* Category management
+* Brand management
+* Unit management
+* Product management
+* Product images
+* Product slug
+* Opening stock
+* Minimum stock level
+* Current stock tracking
 
-## Laravel Sponsors
+### Supplier Management
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+* Supplier management
+* Automatic supplier code generation
+* Supplier contact information
+* Supplier bank accounts
+* Primary bank account
+* Soft deletes
 
-### Premium Partners
+### Purchase Management
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+* Create and manage purchases
+* Purchase items
+* Purchase payments
+* Automatic purchase number generation
+* Payment status
+* Multiple payment methods
+* Transaction-based purchase processing
 
-## Contributing
+### Stock Management
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* Stock adjustments
+* Increase / decrease stock
+* Stock movement history
+* Opening stock
+* Purchase stock updates
+* Adjustment reasons
+* Before and after stock tracking
+* Draft, approved and cancelled adjustment states
 
-## Code of Conduct
+## How I Structured the Application
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+One of the main things I wanted to practice in this project was keeping business logic out of the controller as much as possible.
 
-## Security Vulnerabilities
+The general flow I am following is:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Request
+   ↓
+Validation
+   ↓
+Controller
+   ↓
+Service
+   ↓
+Action
+   ↓
+Repository
+   ↓
+Model
+   ↓
+Database
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+For example, the purchase and stock flow roughly works like this:
+
+
+Purchase
+   ↓
+Purchase Items
+   ↓
+Database Transaction
+   ↓
+Update Product Stock
+   ↓
+Create Stock Movement
+   ↓
+New Current Stock
+
+
+I am using this approach to make the code easier to maintain and to keep different responsibilities separated.
+
+## Current Modules
+
+* Authentication
+* Authorization
+* Category
+* Brand
+* Unit
+* Supplier
+* Product
+* Purchase
+* Stock
+
+## Planned Modules
+
+These are the modules I plan to work on next:
+
+* Sales
+* Reports
+* Attendance
+* Activity Log
+* Notifications
+* PDF / Excel
+* Settings
+* Deployment
+
+## Tech Stack
+
+### Backend
+
+* PHP
+* Laravel
+* Laravel Sanctum
+* Laravel Fortify
+
+### Database
+
+* MySQL
+
+### Frontend
+
+* Blade
+* Livewire
+* Tailwind CSS
+* JavaScript
+
+### Tools
+
+* Git
+* GitHub
+* PhpStorm
+* PHPUnit
+
+## Database
+
+The project uses MySQL.
+
+Some of the main tables/entities are:
+
+Users
+Categories
+Brands
+Units
+Suppliers
+Supplier Bank Accounts
+Products
+Product Images
+Purchases
+Purchase Items
+Purchase Payments
+Stock Adjustments
+Stock Movements
+
+
+## Testing
+
+I am gradually adding tests as the project grows.
+
+The main areas I want to cover include:
+
+* Authentication
+* Purchase creation
+* Purchase payments
+* Stock updates
+* Stock adjustments
+* Stock movements
+
+Testing the purchase and stock flow is especially important because these operations change inventory data.
+
+## Running the Project Locally
+
+### Requirements
+
+* PHP 8.2+
+* Composer
+* MySQL
+* Node.js and npm
+
+## Things I Am Learning From This Project
+
+This project has helped me practice more than just Laravel CRUD.
+
+Some of the main things I am working on are:
+
+* Laravel application structure
+* Repository Pattern
+* Service Layer
+* Action classes
+* Dependency Injection
+* Eloquent relationships
+* Database transactions
+* Inventory and stock logic
+* Authentication and authorization
+* REST API concepts
+* Git and GitHub workflow
+* Writing code that is easier to maintain
+
+## Project Status
+
+🚧 **Work in Progress**
+
+The main authentication, authorization, product, supplier, purchase, and stock modules are currently implemented.
+
+I am continuing to improve the existing modules before moving on to the remaining parts of the ERP system.
+
+## Author
+
+**Arif Hasan**
+
+Laravel & Vue.js Developer
+
+[GitHub](https://github.com/arifhasan-dev)
+
