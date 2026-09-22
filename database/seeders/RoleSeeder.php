@@ -60,6 +60,16 @@ class RoleSeeder extends Seeder
             'category.edit',
             'category.delete',
 
+            'brand.view',
+            'brand.create',
+            'brand.edit',
+            'brand.delete',
+
+            'unit.view',
+            'unit.create',
+            'unit.edit',
+            'unit.delete',
+
             'order.view',
             'order.create',
             'order.edit',

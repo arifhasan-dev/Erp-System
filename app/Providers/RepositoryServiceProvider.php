@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Repositories\Interfaces\ProductImageRepositoryInterface;
 use App\Repositories\Interfaces\ProductRepositoryInterface;
+use App\Repositories\Interfaces\StockAdjustmentRepositoryInterface;
 use App\Repositories\Interfaces\SupplierRepositoryInterface;
 use App\Repositories\ProductImageRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\StockAdjustmentRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\SupplierRepository;
 use App\Repositories\SupplierBankAccountRepository;
@@ -35,6 +37,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ProductImageRepositoryInterface::class,
             ProductImageRepository::class
+        );
+        $this->app->bind(
+            StockAdjustmentRepositoryInterface::class,
+            StockAdjustmentRepository::class
         );
     }
 
