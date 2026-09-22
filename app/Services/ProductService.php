@@ -33,6 +33,7 @@ class ProductService
         try {
             $data['created_by'] = $userId;
             $data['slug'] = Str::slug($data['name']);
+            $data['current_stock'] = $data['opening_stock'];
             $images = $data['images'] ?? [];
             unset($data['images']);
             $product =$this->productRepository->create($data);

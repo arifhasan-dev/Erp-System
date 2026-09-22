@@ -29,6 +29,14 @@ class Product extends Model
     {
         return $this->belongsTo(Supplier::class);
     }
+    public function stockAdjustments()
+    {
+        return $this->hasMany(StockAdjustment::class);
+    }
+    public function stockMovements()
+    {
+        return $this->hasMany(StockMovement::class);
+    }
 
 
     protected $fillable = [
@@ -44,6 +52,7 @@ class Product extends Model
         'purchase_price',
         'selling_price',
         'opening_stock',
+        'current_stock',
         'minimum_stock',
         'description',
         'status',
