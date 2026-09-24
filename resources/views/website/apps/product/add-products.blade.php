@@ -121,12 +121,7 @@
                                             </label>
 
                                             <input
-                                                type="text"
-                                                id="barcode"
-                                                name="barcode"
-                                                class="form-control"
-                                                value="{{ old('barcode') }}"
-                                                placeholder="e.g. 8901234567890">
+                                                type="text" id="barcode" name="barcode" class="form-control" value="{{ old('barcode') }}" placeholder="e.g. 8901234567890">
                                         </div>
                                     </div>
                                 </div>
@@ -162,13 +157,7 @@
                                             <label for="opening_stock" class="form-label">
                                                 Opening Stock <span class="text-danger">*</span>
                                             </label>
-                                            <input type="number"
-                                                   class="form-control"
-                                                   id="opening_stock"
-                                                   name="opening_stock"
-                                                   min="0"
-                                                   placeholder="Enter opening stock"
-                                                   required>
+                                            <input type="number" class="form-control" id="opening_stock" name="opening_stock" min="0" placeholder="Enter opening stock" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="minimum_stock" class="form-label">

@@ -1390,8 +1390,8 @@
                                 </a>
                                 <div class="collapse" id="collapseCustomers">
                                     <ul class="nav-menu-sub">
-                                        <li><a href="apps-customers-list.html" class="nav-link"><span data-translate="pe-customer-list">Customer List</span></a></li>
-                                        <li><a href="apps-customers-add.html" class="nav-link"><span data-translate="pe-add-customer">Add Customer</span></a></li>
+                                        <li><a href="{{route('customers.index')}}" class="nav-link"><span data-translate="pe-customer-list">Customer List</span></a></li>
+                                        <li><a href="{{route('customers.create')}}" class="nav-link"><span data-translate="pe-add-customer">Add Customer</span></a></li>
                                         <li><a href="apps-customers-wallet-balance.html" class="nav-link"><span data-translate="pe-wallet-balance">Wallet Balance</span></a></li>
                                         <li><a href="apps-customers-activity-log.html" class="nav-link"><span data-translate="pe-activity-log">Activity Log</span></a></li>
                                     </ul>

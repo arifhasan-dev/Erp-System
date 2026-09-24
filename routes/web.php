@@ -12,6 +12,7 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StockAdjustmentController;
+use App\Http\Controllers\CustomerController;
 
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified','user.status'])->group(function () {
@@ -40,5 +41,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::resource('/suppliers',SupplierController::class);
     Route::resource('/products',ProductController::class);
     Route::resource('/stock-adjustments',StockAdjustmentController::class);
+    Route::resource('/customers',CustomerController::class);
 
 });

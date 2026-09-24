@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\CustomerRepository;
+use App\Repositories\Interfaces\CustomerRepositoryInterface;
 use App\Repositories\Interfaces\ProductImageRepositoryInterface;
 use App\Repositories\Interfaces\ProductRepositoryInterface;
 use App\Repositories\Interfaces\StockAdjustmentRepositoryInterface;
@@ -41,6 +43,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             StockAdjustmentRepositoryInterface::class,
             StockAdjustmentRepository::class
+        );
+        $this->app->bind(
+            CustomerRepositoryInterface::class,
+            CustomerRepository::class
         );
     }
 
