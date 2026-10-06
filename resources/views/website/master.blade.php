@@ -1420,8 +1420,8 @@
                                 </a>
                                 <div class="collapse" id="collapsePurchases">
                                     <ul class="nav-menu-sub">
-                                        <li><a href="apps-purchase.html" class="nav-link"><span data-translate="pe-purchase">Purchase</span></a></li>
-                                        <li><a href="apps-purchase-add.html" class="nav-link"><span data-translate="pe-add-purchase">Add Purchase</span></a></li>
+                                        <li><a href="{{route('sales.index')}}" class="nav-link"><span data-translate="pe-purchase">Sale</span></a></li>
+                                        <li><a href="{{route('sales.create')}}" class="nav-link"><span data-translate="pe-add-purchase">Add Sale</span></a></li>
                                         <li><a href="apps-purchase-returns.html" class="nav-link"><span data-translate="pe-returns">Returns</span></a></li>
                                         <li><a href="apps-purchase-payments.html" class="nav-link"><span data-translate="pe-payments">Payments</span></a></li>
                                     </ul>
